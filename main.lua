@@ -1,12 +1,20 @@
 function love.load()
   love.graphics.setBackgroundColor(8, 5, 94)
   cartman = love.graphics.newImage("cartman.png")
+  ponch = love.graphics.newImage("ponch.png")
+  tick = require "tick"
+
   x = 100
   y = 50
+
   sp = { x = 300, y = 200 }
+
+  rand = { x = math.random(1, 600), y = math.random(1, 400) }
 end
 
 function love.update(dt)
+  tick.update(dt)
+
   if love.keyboard.isDown("right") then
     x = x + sp.x * dt
   elseif love.keyboard.isDown("left") then
@@ -22,4 +30,5 @@ end
 
 function love.draw()
   love.graphics.draw(cartman, x, y)
+  love.graphics.draw(ponch, rand.x, rand.y)
 end
