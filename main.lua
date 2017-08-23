@@ -3,21 +3,22 @@ function love.load()
   cartman = love.graphics.newImage("cartman.png")
   x = 100
   y = 50
+  speedX = 300
+  speedY = 200
 end
 
 function love.update(dt)
-  print(dt)
-
   if love.keyboard.isDown("right") then
-    x = x + 200 * dt
+    x = x + speedX * dt
   elseif love.keyboard.isDown("left") then
-    x = x - 200 * dt
-  elseif love.keyboard.isDown("down") then
-    y = y + 200 * dt
-  elseif love.keyboard.isDown("up") then
-    y = y - 200 * dt
+    x = x - speedX * dt
   end
 
+  if love.keyboard.isDown("down") then
+    y = y + speedY * dt
+  elseif love.keyboard.isDown("up") then
+    y = y - speedY * dt
+  end
 end
 
 function love.draw()
